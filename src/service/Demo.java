@@ -23,10 +23,10 @@ public class Demo {
         
         try {
             doc = Jsoup.connect(url).userAgent("Jsoup clien").timeout(20000).get();
-            Elements elements = doc.select("div.ProductList__Wrapper-sc-1dl80l2-0 a.product-item");
+            Elements elements = doc.select("div.info div.name h3");
             
             for(Element element : elements) {
-                System.out.println(element.attr("href"));
+                System.out.println(element.ownText());
             }
         } catch (IOException ex) {
             Logger.getLogger(Demo.class.getName()).log(Level.SEVERE, null, ex);
