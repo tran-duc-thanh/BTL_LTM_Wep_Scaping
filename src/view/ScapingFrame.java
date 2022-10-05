@@ -247,13 +247,18 @@ public class ScapingFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String url = jTextField1.getText();
         String fileName = jTextField5.getText();
+        String fileType = jComboBox2.getSelectedItem().toString();
         int page = Integer.parseInt(jComboBox3.getSelectedItem().toString());
         while (page > 0) {
             scaping(url + "&page=" + page, map_attribute);
             --page;
         }
         try {
-            createFile(fileName, list_result);
+            if (fileType.equals(".json")){
+                createFileJson(fileName, list_result);
+            } else if (fileType.equals(".sql")) {
+                createFileSql(fileName, list_result);
+            }
             map_attribute = new HashMap<>();
             list_result = new ArrayList<>();
             addDataTable(map_attribute);
@@ -362,16 +367,7 @@ public class ScapingFrame extends javax.swing.JFrame {
         }
     }
     
-    private void test () {
-        Gson gson = new Gson();
-        String json = gson.toJson(list_result);
-        json = json.substring(1, json.length() - 1);
-        json = json.replace("},{", "}\n{");
-        System.out.println(json);
-        
-    }
-    
-    private void createFile(String file, List<Map<String, String>> arrData)
+    private void createFileJson(String file, List<Map<String, String>> arrData)
             throws IOException {
         FileWriter writer = new FileWriter(file + ".json");
         int size = arrData.size();
@@ -379,6 +375,32 @@ public class ScapingFrame extends javax.swing.JFrame {
         for (int i=0; i < size; i++) {
             String json = gson.toJson(arrData.get(i));
             writer.write(json);
+            if(i < size-1)
+                writer.write("\n");
+        }
+        writer.close();
+    }
+    
+    private void createFileSql(String file, List<Map<String, String>> arrData)
+            throws IOException {
+        FileWriter writer = new FileWriter("tbl_" + file + ".sql");
+        int size = arrData.size();
+        Gson gson = new Gson();
+        for (int i=0; i < size; i++) {
+            StringBuilder line = new StringBuilder("INSERT INTO " + file + " (");
+            for (String key : map_attribute.keySet()) {
+                line.append(key);
+                line.append(",");
+            }
+            if (line.length() > 0) line.setLength(line.length()-1);
+            line.append(") VALUES (");
+            for (String key : map_attribute.keySet()) {
+                line.append(arrData.get(i).get(key));
+                line.append(",");
+            }
+            if (line.length() > 0) line.setLength(line.length()-1);
+            line.append(");");
+            writer.write(line.toString());
             if(i < size-1)
                 writer.write("\n");
         }
