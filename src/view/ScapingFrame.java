@@ -1,6 +1,7 @@
 package view;
 
 import com.google.gson.Gson;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -245,13 +246,25 @@ public class ScapingFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String url = jTextField1.getText();
+        String fileName = jTextField5.getText();
         int page = Integer.parseInt(jComboBox3.getSelectedItem().toString());
         while (page > 0) {
-            System.out.println(url);
             scaping(url + "&page=" + page, map_attribute);
             --page;
         }
-        test();
+        try {
+            createFile(fileName, list_result);
+            map_attribute = new HashMap<>();
+            list_result = new ArrayList<>();
+            addDataTable(map_attribute);
+            jTextField5.setText(null);
+            jComboBox3.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
+            jTextField1.setText(null);
+        } catch (IOException ex) {
+            Logger.getLogger(ScapingFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -355,5 +368,20 @@ public class ScapingFrame extends javax.swing.JFrame {
         json = json.substring(1, json.length() - 1);
         json = json.replace("},{", "}\n{");
         System.out.println(json);
+        
+    }
+    
+    private void createFile(String file, List<Map<String, String>> arrData)
+            throws IOException {
+        FileWriter writer = new FileWriter(file + ".json");
+        int size = arrData.size();
+        Gson gson = new Gson();
+        for (int i=0; i < size; i++) {
+            String json = gson.toJson(arrData.get(i));
+            writer.write(json);
+            if(i < size-1)
+                writer.write("\n");
+        }
+        writer.close();
     }
 }
