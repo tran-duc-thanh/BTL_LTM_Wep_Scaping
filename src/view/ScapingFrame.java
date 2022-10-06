@@ -73,7 +73,7 @@ public class ScapingFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Link: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tag", "div", "a", "h1", "h2", "h3", "h4", "h5", "h6" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tag", "div", "a", "h1", "h2", "h3", "h4", "h5", "h6", "span", "p" }));
 
         jLabel3.setText("Tag:");
 
@@ -116,7 +116,7 @@ public class ScapingFrame extends javax.swing.JFrame {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".json", ".sql" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "60", "70", "80", "90", "100", "200", "300", "400", "500", "1000", "2000" }));
 
         jLabel7.setText("File name:");
 

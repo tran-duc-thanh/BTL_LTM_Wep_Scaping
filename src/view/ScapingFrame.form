@@ -148,7 +148,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="9">
+          <StringArray count="11">
             <StringItem index="0" value="tag"/>
             <StringItem index="1" value="div"/>
             <StringItem index="2" value="a"/>
@@ -158,6 +158,8 @@
             <StringItem index="6" value="h4"/>
             <StringItem index="7" value="h5"/>
             <StringItem index="8" value="h6"/>
+            <StringItem index="9" value="span"/>
+            <StringItem index="10" value="p"/>
           </StringArray>
         </Property>
       </Properties>
@@ -253,7 +255,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBox3">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="50">
+          <StringArray count="61">
             <StringItem index="0" value="1"/>
             <StringItem index="1" value="2"/>
             <StringItem index="2" value="3"/>
@@ -304,6 +306,17 @@
             <StringItem index="47" value="48"/>
             <StringItem index="48" value="49"/>
             <StringItem index="49" value="50"/>
+            <StringItem index="50" value="60"/>
+            <StringItem index="51" value="70"/>
+            <StringItem index="52" value="80"/>
+            <StringItem index="53" value="90"/>
+            <StringItem index="54" value="100"/>
+            <StringItem index="55" value="200"/>
+            <StringItem index="56" value="300"/>
+            <StringItem index="57" value="400"/>
+            <StringItem index="58" value="500"/>
+            <StringItem index="59" value="1000"/>
+            <StringItem index="60" value="2000"/>
           </StringArray>
         </Property>
       </Properties>
